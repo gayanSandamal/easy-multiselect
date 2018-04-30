@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Multi select</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link href="css/easy-multiselect.css" rel="stylesheet">
+        <script src="js/easy-multiselect.js"></script>
+
+        <style>
+
+            .prev-page-container {
+                position: relative;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                z-index: 0;
+                text-align: center;
+                padding: 0px 0px 20px 0px;
+                color: #fff;
+            }
+            .prev-page-container > a {
+                display: block;
+                margin: 0px 0px 0px 0px;
+                color: #fff;
+            }
+            .prev-page-container > h3 {
+                font-size: 30px;
+                font-family: Helvetica;
+            }
+            .prev-page-container > a > i {
+                margin: 0px 10px 0px 0px;
+                font-size: 34px;
+            }
+            span.tap {
+                font-size: 22px;
+            }
+            .prev-page-container > h5 > a {
+                background-color: #0077B5;
+                color: #fff;
+                padding: 15px 20px;
+            }
+            .prev-page-container > h5 > a i {
+                margin-right: 10px;
+                position: relative;
+                top: 2px;
+                font-size: 20px;
+            }
+            .prev-page-container > h5 {
+                margin: 20px 0px;
+            }
+            .add-block > .col-md-3.col-sm-4 > label {
+                margin: 12px 0px;
+            }
+            .multiselect-block > .multiselect-title-block > h3 {
+                margin: 0px 0px 10px 0px;
+                padding: 10px;
+                font-size: 18px;
+            }
+            .multiselect-content {
+                max-height: 210px;
+                overflow-y: auto;
+            }
+            .item {
+                padding: 10px;
+            }
+            .item:hover {
+                background-color: #CFD8DC;
+            }
+            body {
+                background: linear-gradient(to bottom right, #3F51B5 , #7E57C2);
+            }
+            .multiselect-block {
+                background-color: #fff;
+            }
+            input#add-button {
+                background: linear-gradient(to bottom right, #3F51B5 , #7E57C2);
+                -webkit-appearance: none;
+                border: none;
+                padding: 12px;
+                color: #fff;
+            }
+            .button-block {
+                margin: 0px -15px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="prev-page-container">
+            <h3>Easy NumPad</h3>
+            <h5>by <a href="https://www.linkedin.com/in/gayan-sandamal/"><span><i class="fa fa-linkedin"></i> Gayan Sandamal</span></a></h5>
+            <span class="tap">Click on the purple box</span>
+            <a href="https://github.com/gayanSandamal/easy-multiselect" target="_blank"><i class="fa fa-github"></i><span>Get the source from GitHub</span></a>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="add-block">
+                        <div class="col-md-3 col-sm-4">
+                            <label>
+                                Type and add
+                            </label>
+                        </div>
+                        <div class="col-md-9 col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <input class="add-field" id="add-field" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <input class="add-button" id="add-button" type="button" value="Add"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="multiselect-block multiselect-from-block" id="multiselect-left">
+                        <div class="multiselect-title-block">
+                            <h3>From</h3>
+                        </div>
+                        <div class="multiselect-content multiselect-left">
+                            <div onclick="itemSelect(this)">Item 01</div>
+                            <div onclick="itemSelect(this)">Item 02</div>
+                            <div onclick="itemSelect(this)">Item 03</div>
+                            <div onclick="itemSelect(this)">Item 04</div>
+                            <div onclick="itemSelect(this)">Item 05</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="button-block">
+                        <div class="mutliselect-button button-to" id="button-to"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                        <div class="mutliselect-button button-from" id="button-from"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                        <div class="mutliselect-button button-to-all" id="button-to-all"><i class="fa fa-chevron-right" aria-hidden="true"></i><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                        <div class="mutliselect-button button-from-all" id="button-from-all"><i class="fa fa-chevron-left" aria-hidden="true"></i><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+
+                        <div class="mutliselect-button view-button" id="view-button">View Selected Items in "To" Box</div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="multiselect-block multiselect-to-block">
+                        <div class="multiselect-title-block">
+                            <h3>To</h3>
+                        </div>
+                        <div class="multiselect-content multiselect-right">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <p>Type values and press enter</p>
+                <p>Select items from left box "From" and press enter to move to the right box</p>
+                <p>Select items from right box "To" and press enter to move to the left box</p>
+                <p>Press space to go to the text field</p>
+            </div>
+        </div>
+    </body>
+</html>
